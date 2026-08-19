@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="../DastYarHub.API/DastYarHub.API/DastYarHub.API.csproj" />
+  <Project Path="DastYarHub/DastYarHub.csproj" />
+</Solution>

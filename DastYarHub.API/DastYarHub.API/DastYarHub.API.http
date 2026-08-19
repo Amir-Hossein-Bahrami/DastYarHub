@@ -1,0 +1,6 @@
+@DastYarHub.API_HostAddress = http://localhost:5004
+
+GET {{DastYarHub.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
