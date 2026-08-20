@@ -10,6 +10,10 @@
 
         public string IconUrl { get; set; } = string.Empty;
 
+        public bool IsActive { get; set; }
+
+        public int DisplayOrder { get; set; }
+
         public ICollection<Tool> Tools { get; set; } = new List<Tool>();
     }
 }

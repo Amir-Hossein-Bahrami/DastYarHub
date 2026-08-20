@@ -8,10 +8,10 @@
     <link rel="icon" type="image/png" href="../assets/images/icons/logo.png"/>
     <link rel="stylesheet" href="../assets/css/home.css">
 </head>
-<body>
+<body id="home">
 <header class="site-header">
     <div class="container header-inner">
-        <a class="brand" href="#" aria-label="دستیار هاب">
+        <a class="brand" href="#home" aria-label="صفحه اصلی دستیار هاب">
  <img
     class="brand-logo"
     src="../assets/images/icons/logo.png"
@@ -19,16 +19,16 @@
   />
             <span class="brand-name">دستیار هاب</span>
         </a>
-        <nav class="main-nav" aria-label="منوی اصلی">
-            <a class="nav-link active" href="#">خانه</a>
+        <nav class="main-nav" id="mainNav" aria-label="منوی اصلی">
+            <a class="nav-link active" href="#home" aria-current="page">خانه</a>
             <a class="nav-link" href="#tools">ابزارها</a>
-            <a class="nav-link" href="#tools">بازار ها</a>
+            <a class="nav-link" href="#markets">بازارها</a>
             <a class="nav-link" href="#">وبلاگ</a>
             <a class="nav-link" href="#">درباره ما</a>
         </nav>
         <div class="header-actions">
             <a class="join-button" href="#">به ما بپیوندید!</a>
-            <button class="menu-toggle" type="button" aria-label="باز کردن منو" aria-expanded="false">
+            <button class="menu-toggle" type="button" aria-label="باز کردن منو" aria-expanded="false" aria-controls="mainNav">
                 <span></span><span></span><span></span>
             </button>
         </div>
@@ -64,14 +64,17 @@
                 <a href="#tools" class="section-link">مشاهده همه ابزارها ←</a>
             </div>
            <div class="categories-list">
-                <button class="category-item active" data-category="all"><span class="category-icon"><img src="../assets/images/categories/all-tools.png" alt=""></span><span>همه ابزارها</span></button>
-                <button class="category-item" data-category="qr-code"><span class="category-icon"><img src="../assets/images/categories/qr-code.png" alt=""></span><span>QrCode</span></button>
-                <button class="category-item" data-category="pdf"><span class="category-icon"><img src="../assets/images/categories/pdf.png" alt=""></span><span>PDF</span></button>
-                <button class="category-item" data-category="image"><span class="category-icon"><img src="../assets/images/categories/images.png" alt=""></span><span>تصاویر</span></button>
-                <button class="category-item" data-category="file"><span class="category-icon"><img src="../assets/images/categories/file.png" alt=""></span><span>فایل</span></button>
-                <button class="category-item" data-category="video"><span class="category-icon"><img src="../assets/images/categories/video.png" alt=""></span><span>ویدیو</span></button>
-                <button class="category-item" data-category="audio"><span class="category-icon"><img src="../assets/images/categories/audio.png" alt=""></span><span>صدا</span></button>
-                <button class="category-item" data-category="text"><span class="category-icon"><img src="../assets/images/categories/text.png" alt=""></span><span>متن</span></button>
+                <button class="category-item active" type="button" data-category="all"><span class="category-icon"><img src="../assets/images/categories/all-tools.png" alt=""></span><span>همه ابزارها</span></button>
+                <button class="category-item" type="button" data-category="qr-code"><span class="category-icon"><img src="../assets/images/categories/qr-code.png" alt=""></span><span>QR Code</span></button>
+                <button class="category-item" type="button" data-category="pdf"><span class="category-icon"><img src="../assets/images/categories/pdf.png" alt=""></span><span>PDF</span></button>
+                <button class="category-item" type="button" data-category="image"><span class="category-icon"><img src="../assets/images/categories/images.png" alt=""></span><span>تصاویر</span></button>
+                <button class="category-item" type="button" data-category="file"><span class="category-icon"><img src="../assets/images/categories/file.png" alt=""></span><span>فایل</span></button>
+                <button class="category-item" type="button" data-category="video"><span class="category-icon"><img src="../assets/images/categories/video.png" alt=""></span><span>ویدیو</span></button>
+                <button class="category-item" type="button" data-category="audio"><span class="category-icon"><img src="../assets/images/categories/audio.png" alt=""></span><span>صدا</span></button>
+                <button class="category-item" type="button" data-category="text"><span class="category-icon"><img src="../assets/images/categories/text.png" alt=""></span><span>متن</span></button>
+                 <button class="category-item" type="button" data-category="text"><span class="category-icon"><img src="../assets/images/categories/text.png" alt=""></span><span>متن</span></button>
+                <button class="category-item" type="button" data-category="text"><span class="category-icon"><img src="../assets/images/categories/text.png" alt=""></span><span>متن</span></button>
+           
             </div>
         </div>
     </section>
@@ -83,42 +86,42 @@
                 <a href="#tools" class="section-link">همه ابزارها ←</a>
             </div>
             <div class="tools-grid" id="toolsGrid">
-                <article class="tool-card" data-category="qr" data-title="ساخت QR Code">
-                    <div class="tool-card-top"><span class="tool-icon"><img src="assets/images/tools/qr-code.png" alt="QR Code"></span><span class="tool-category">QR</span></div>
+                <article class="tool-card" data-category="qr-code" data-title="ساخت QR Code">
+                    <div class="tool-card-top"><span class="tool-icon"><img src="../assets/images/tools/qr-code.png" alt="QR Code"></span><span class="tool-category">QR</span></div>
                     <h3>ساخت QR Code</h3><p>ساخت انواع QR Code به شکل ساده و حرفه‌ای.</p><a href="#" class="tool-button">استفاده</a>
                 </article>
                 <article class="tool-card" data-category="pdf" data-title="تبدیل PDF به تصویر">
-                    <div class="tool-card-top"><span class="tool-icon"><img src="assets/images/tools/pdf-to-image.png" alt="PDF به تصویر"></span><span class="tool-category">PDF</span></div>
+                    <div class="tool-card-top"><span class="tool-icon"><img src="../assets/images/tools/pdf-to-image.png" alt="PDF به تصویر"></span><span class="tool-category">PDF</span></div>
                     <h3>تبدیل PDF به تصویر</h3><p>تبدیل صفحات PDF به تصاویر با کیفیت مناسب.</p><a href="#" class="tool-button">استفاده</a>
                 </article>
                 <article class="tool-card" data-category="image" data-title="تبدیل تصویر به PDF">
-                    <div class="tool-card-top"><span class="tool-icon"><img src="assets/images/tools/image-to-pdf.png" alt="تصویر به PDF"></span><span class="tool-category">تصویر</span></div>
+                    <div class="tool-card-top"><span class="tool-icon"><img src="../assets/images/tools/image-to-pdf.png" alt="تصویر به PDF"></span><span class="tool-category">تصویر</span></div>
                     <h3>تصویر به PDF</h3><p>چند تصویر را به یک فایل PDF تبدیل کن.</p><a href="#" class="tool-button">استفاده</a>
                 </article>
                 <article class="tool-card" data-category="file" data-title="فشرده سازی فایل">
-                    <div class="tool-card-top"><span class="tool-icon"><img src="assets/images/tools/compress.png" alt="فشرده سازی فایل"></span><span class="tool-category">فایل</span></div>
+                    <div class="tool-card-top"><span class="tool-icon"><img src="../assets/images/tools/compress.png" alt="فشرده سازی فایل"></span><span class="tool-category">فایل</span></div>
                     <h3>فشرده‌سازی فایل</h3><p>کاهش حجم فایل‌ها بدون دردسر و پیچیدگی.</p><a href="#" class="tool-button">استفاده</a>
                 </article>
                 <article class="tool-card" data-category="image" data-title="تصویر به متن">
-                    <div class="tool-card-top"><span class="tool-icon"><img src="assets/images/tools/ocr.png" alt="تصویر به متن"></span><span class="tool-category">هوشمند</span></div>
+                    <div class="tool-card-top"><span class="tool-icon"><img src="../assets/images/tools/ocr.png" alt="تصویر به متن"></span><span class="tool-category">هوشمند</span></div>
                     <h3>تصویر به متن</h3><p>استخراج متن از تصویر با استفاده از OCR.</p><a href="#" class="tool-button">استفاده</a>
                 </article>
             </div>
-            <div class="tools-empty" id="toolsEmpty">ابزاری با این مشخصات پیدا نشد.</div>
+            <div class="tools-empty" id="toolsEmpty" role="status" aria-live="polite">ابزاری با این مشخصات پیدا نشد.</div>
         </div>
     </section>
 
-    <section class="market-section">
+    <section class="market-section" id="markets">
         <div class="container">
-            <div class="market-cart">
+            <div class="market-card">
                 <div class="market-context">
                 <span class="section-kicker">ابزار مناسب تو</span>
                 <h2>ابزارهای مناسب حرفه‌ات را پیدا کن!</h2>
                 <p>فرقی نمی‌کند برنامه‌نویس باشی، طراح، دانشجو یا تولیدکننده محتوا؛ ابزارهای کاربردی متناسب با نیازت را یکجا پیدا کن.</p>
-                <a href="#" class="market-button">مشاهده بازارها ←</a>
+                <a href="#" class="market-button">مشاهده بازارها </a>
                 </div>
                 <div class="market-visual">
-                    <img src="../assets/images/market/professional-tools-wide.png">
+                    <img src="../assets/images/market/professional-tools-wide.png" alt="ابزارهای مناسب برای حرفه‌های مختلف" loading="lazy">
                 </div>
            </div>
         </div>
@@ -129,10 +132,10 @@
         <div class="container">
             <div class="section-heading centered"><div><span class="section-kicker">چرا دستیار؟</span><h2>ساده، سریع و کاربردی</h2></div></div>
             <div class="features-grid">
-                <article class="feature-card"><img src="../assets/images/features/fast.png" alt="سریع"><h3>سریع</h3><p>ابزارها را بدون مراحل اضافی و پیچیده استفاده کن.</p></article>
-                <article class="feature-card"><img src="../assets/images/features/simple.png" alt="ساده"><h3>ساده</h3><p>رابط کاربری ساده و قابل فهم برای همه کاربران.</p></article>
-                <article class="feature-card"><img src="../assets/images/features/secure.png" alt="امن"><h3>امن</h3><p>تلاش می‌کنیم پردازش ابزارها با حفظ حریم خصوصی انجام شود.</p></article>
-                <article class="feature-card"><img src="../assets/images/features/online.png" alt="آنلاین"><h3>آنلاین</h3><p>بدون نصب نرم‌افزار، ابزار مورد نیازت همیشه در دسترس است.</p></article>
+                <article class="feature-card"><img src="../assets/images/features/fast.png" alt="سریع" loading="lazy"><h3>سریع</h3><p>ابزارها را بدون مراحل اضافی و پیچیده استفاده کن.</p></article>
+                <article class="feature-card"><img src="../assets/images/features/simple.png" alt="ساده" loading="lazy"><h3>ساده</h3><p>رابط کاربری ساده و قابل فهم برای همه کاربران.</p></article>
+                <article class="feature-card"><img src="../assets/images/features/secure.png" alt="امن" loading="lazy"><h3>امن</h3><p>تلاش می‌کنیم پردازش ابزارها با حفظ حریم خصوصی انجام شود.</p></article>
+                <article class="feature-card"><img src="../assets/images/features/online.png" alt="آنلاین" loading="lazy"><h3>آنلاین</h3><p>بدون نصب نرم‌افزار، ابزار مورد نیازت همیشه در دسترس است.</p></article>
             </div>
         </div>
     </section>
@@ -147,7 +150,7 @@
                     <a href="#" class="cta-button">پیشنهاد یک ابزار</a>
                 </div>
                 <div class="cta-visual">
-                    <img src="../assets/images/cta/suggest-new-tool.png" alt="پیشنهاد ابزار جدید">
+                    <img src="../assets/images/cta/suggest-new-tool.png" alt="پیشنهاد ابزار جدید" loading="lazy">
                 </div>
             </div>
         </div>
@@ -157,7 +160,7 @@
 <footer class="site-footer">
     <div class="container footer-inner">
         <div class="footer-brand">
-            <a class="brand" href="#">
+            <a class="brand" href="#home">
  <img
     class="brand-logo"
     src="../assets/images/icons/logo.png"
@@ -165,7 +168,7 @@
   />                <span class="brand-name">دستیار هاب</span></a>
             <p>ابزارهای کاربردی، ساده و آنلاین در یک مکان.</p>
         </div>
-        <div class="footer-links"><a href="#tools">ابزارها</a><a href="#">بازارها</a><a href="#">وبلاگ</a><a href="#">درباره ما</a><a href="#">تماس با ما</a></div>
+        <div class="footer-links"><a href="#tools">ابزارها</a><a href="#markets">بازارها</a><a href="#">وبلاگ</a><a href="#">درباره ما</a><a href="#">تماس با ما</a></div>
         <p class="copyright">© 2026 دستیار هاب</p>
     </div>
 </footer>
