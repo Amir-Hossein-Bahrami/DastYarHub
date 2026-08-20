@@ -1,7 +1,22 @@
+using DastYarHub.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddHttpClient<ICategoryApiService, CategoryApiService>(client =>
+{
+    var apiBaseUrl =
+        builder.Configuration["ApiSettings:BaseUrl"];
+
+    if (string.IsNullOrWhiteSpace(apiBaseUrl))
+    {
+        throw new InvalidOperationException("آدرس API در appsettings.json تنظیم نشده است.");
+    }
+
+    client.BaseAddress = new Uri(apiBaseUrl);
+});
 
 var app = builder.Build();
 

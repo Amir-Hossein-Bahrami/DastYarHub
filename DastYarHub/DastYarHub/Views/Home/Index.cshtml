@@ -1,8 +1,147 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model DastYarHub.ViewModel.HomeViewModel
+
+@section Styles {
+    <link rel="stylesheet"
+          href="~/assets/css/home.css"
+          asp-append-version="true" />
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section class="hero-section">
+    <div class="container hero-grid">
+        <div class="hero-visual">
+            <img src="../assets/images/hero/hero.png" alt="ابزارهای دستیار هاب" class="hero-image">
+        </div>
+
+        <div class="hero-content">
+            <span class="eyebrow">دستیار شما در دنیای ابزارها</span>
+            <h1>همه ابزارهای ضروری <span>در یک مکان</span></h1>
+            <p>تبدیل فایل، ساخت QR Code، فشرده‌سازی، تبدیل تصاویر و ده‌ها ابزار کاربردی دیگر؛ ساده، سریع و آنلاین.</p>
+            <div class="tool-search">
+                <input id="toolSearch" type="search" placeholder="چه ابزاری نیاز داری؟" aria-label="جستجوی ابزار">
+                <button id="searchButton" type="button" aria-label="جستجو">⌕</button>
+            </div>
+            <div class="hero-tags">
+                <span>QR Code</span><span>PDF</span><span>تصویر</span><span>فایل</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="categories-section">
+    <div class="container">
+        <div class="section-heading">
+            <div><span class="section-kicker">دسته‌بندی</span><h2>ابزار مورد نیازت را پیدا کن</h2></div>
+            <a href="#tools" class="section-link">مشاهده همه ابزارها ←</a>
+        </div>
+        <div class="categories-list">
+
+            <a asp-controller="Tools"
+               asp-action="Index"
+               class="category-item">
+
+                <span class="category-icon">
+                    <img src="~/assets/images/categories/all-tools.png"
+                         alt="همه ابزارها" />
+                </span>
+
+                <span>همه ابزارها</span>
+            </a>
+
+            @foreach (var category in Model.Categories)
+            {
+                <a asp-controller="Tools" asp-action="Index" asp-route-category="@category.Slug"
+                   class="category-item">
+
+                    <span class="category-icon">
+
+                        @if (!string.IsNullOrWhiteSpace(category.IconUrl))
+                        {
+                            <img src="@category.IconUrl" alt="@category.Name" />
+                        }
+
+                    </span>
+
+                    <span>@category.Name</span>
+                </a>
+            }
+
+        </div>
+        </div>
+    </section>
+
+    <section class="tools-section" id="tools">
+        <div class="container">
+            <div class="section-heading">
+                <div><span class="section-kicker">محبوب‌ترین‌ها</span><h2>ابزارهای پرطرفدار</h2></div>
+                <a href="#tools" class="section-link">همه ابزارها ←</a>
+            </div>
+            <div class="tools-grid" id="toolsGrid">
+                <article class="tool-card" data-category="qr-code" data-title="ساخت QR Code">
+                    <div class="tool-card-top"><span class="tool-icon"><img src="../assets/images/tools/qr-code.png" alt="QR Code"></span><span class="tool-category">QR</span></div>
+                    <h3>ساخت QR Code</h3><p>ساخت انواع QR Code به شکل ساده و حرفه‌ای.</p><a href="#" class="tool-button">استفاده</a>
+                </article>
+                <article class="tool-card" data-category="pdf" data-title="تبدیل PDF به تصویر">
+                    <div class="tool-card-top"><span class="tool-icon"><img src="../assets/images/tools/pdf-to-image.png" alt="PDF به تصویر"></span><span class="tool-category">PDF</span></div>
+                    <h3>تبدیل PDF به تصویر</h3><p>تبدیل صفحات PDF به تصاویر با کیفیت مناسب.</p><a href="#" class="tool-button">استفاده</a>
+                </article>
+                <article class="tool-card" data-category="image" data-title="تبدیل تصویر به PDF">
+                    <div class="tool-card-top"><span class="tool-icon"><img src="../assets/images/tools/image-to-pdf.png" alt="تصویر به PDF"></span><span class="tool-category">تصویر</span></div>
+                    <h3>تصویر به PDF</h3><p>چند تصویر را به یک فایل PDF تبدیل کن.</p><a href="#" class="tool-button">استفاده</a>
+                </article>
+                <article class="tool-card" data-category="file" data-title="فشرده سازی فایل">
+                    <div class="tool-card-top"><span class="tool-icon"><img src="~/assets/images/tools/compress.png" alt="فشرده سازی فایل"></span><span class="tool-category">فایل</span></div>
+                    <h3>فشرده‌سازی فایل</h3><p>کاهش حجم فایل‌ها بدون دردسر و پیچیدگی.</p><a href="#" class="tool-button">استفاده</a>
+                </article>
+                <article class="tool-card" data-category="image" data-title="تصویر به متن">
+                    <div class="tool-card-top"><span class="tool-icon"><img src="../assets/images/tools/ocr.png" alt="تصویر به متن"></span><span class="tool-category">هوشمند</span></div>
+                    <h3>تصویر به متن</h3><p>استخراج متن از تصویر با استفاده از OCR.</p><a href="#" class="tool-button">استفاده</a>
+                </article>
+            </div>
+            <div class="tools-empty" id="toolsEmpty" role="status" aria-live="polite">ابزاری با این مشخصات پیدا نشد.</div>
+        </div>
+    </section>
+
+    <section class="market-section" id="markets">
+        <div class="container">
+            <div class="market-card">
+                <div class="market-context">
+                    <span class="section-kicker">ابزار مناسب تو</span>
+                    <h2>ابزارهای مناسب حرفه‌ات را پیدا کن!</h2>
+                    <p>فرقی نمی‌کند برنامه‌نویس باشی، طراح، دانشجو یا تولیدکننده محتوا؛ ابزارهای کاربردی متناسب با نیازت را یکجا پیدا کن.</p>
+                    <a href="#" class="market-button">مشاهده بازارها </a>
+                </div>
+                <div class="market-visual">
+                    <img src="../assets/images/market/professional-tools-wide.png" alt="ابزارهای مناسب برای حرفه‌های مختلف" loading="lazy">
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="features-section">
+        <div class="container">
+            <div class="section-heading centered"><div><span class="section-kicker">چرا دستیار؟</span><h2>ساده، سریع و کاربردی</h2></div></div>
+            <div class="features-grid">
+                <article class="feature-card"><img src="../assets/images/features/fast.png" alt="سریع" loading="lazy"><h3>سریع</h3><p>ابزارها را بدون مراحل اضافی و پیچیده استفاده کن.</p></article>
+                <article class="feature-card"><img src="../assets/images/features/simple.png" alt="ساده" loading="lazy"><h3>ساده</h3><p>رابط کاربری ساده و قابل فهم برای همه کاربران.</p></article>
+                <article class="feature-card"><img src="../assets/images/features/secure.png" alt="امن" loading="lazy"><h3>امن</h3><p>تلاش می‌کنیم پردازش ابزارها با حفظ حریم خصوصی انجام شود.</p></article>
+                <article class="feature-card"><img src="../assets/images/features/online.png" alt="آنلاین" loading="lazy"><h3>آنلاین</h3><p>بدون نصب نرم‌افزار، ابزار مورد نیازت همیشه در دسترس است.</p></article>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-card">
+                <div class="cta-content">
+                    <span class="section-kicker">با ما در ساخت دستیار بهتر همراه شو</span>
+                    <h2>ابزار مورد نیازت را پیدا نکردی؟</h2>
+                    <p>پیشنهادت را برای ما بفرست تا در آینده ابزارهای بیشتری به دستیار هاب اضافه کنیم.</p>
+                    <a href="#" class="cta-button">پیشنهاد یک ابزار</a>
+                </div>
+                <div class="cta-visual">
+                    <img src="../assets/images/cta/suggest-new-tool.png" alt="پیشنهاد ابزار جدید" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section> 

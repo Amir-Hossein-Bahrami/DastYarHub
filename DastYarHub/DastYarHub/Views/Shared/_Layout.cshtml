@@ -1,50 +1,174 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - DastYarHub</title>
-    <script type="importmap"></script>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/DastYarHub.styles.css" asp-append-version="true" />
-</head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">DastYarHub</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+﻿@{
+    var currentController =
+        ViewContext.RouteData.Values["controller"]?.ToString();
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - DastYarHub - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    var currentAction =
+        ViewContext.RouteData.Values["action"]?.ToString();
+}
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="دستیار هاب؛ مجموعه‌ای از ابزارهای کاربردی و رایگان آنلاین">
+
+    <title>@ViewData["Title"] | دستیار هاب</title>
+
+    <link rel="icon"
+          type="image/png"
+          href="~/assets/images/icons/logo.png">
+
+    <link rel="stylesheet"
+          href="~/assets/css/style.css"
+          asp-append-version="true">
+
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+
+<body>
+
+    <header class="site-header">
+
+        <div class="container header-inner">
+
+            <a class="brand"
+               asp-controller="Home"
+               asp-action="Index"
+               aria-label="صفحه اصلی دستیار هاب">
+
+                <img class="brand-logo"
+                     src="~/assets/images/icons/logo.png"
+                     alt="لوگوی دستیار هاب">
+
+                <span class="brand-name">
+                    دستیار هاب
+                </span>
+
+            </a>
+
+            <nav class="main-nav"
+     id="mainNav"
+     aria-label="منوی اصلی">
+
+    <a class="nav-link @(currentController == "Home" && currentAction == "Index" ? "active" : "")"
+       asp-controller="Home"
+       asp-action="Index">
+        خانه
+    </a>
+
+    <a class="nav-link @(currentController == "Tools" ? "active" : "")"
+       asp-controller="Tools"
+       asp-action="Index">
+        ابزارها
+    </a>
+
+    <a class="nav-link @(currentController == "Markets" ? "active" : "")"
+       asp-controller="Markets"
+       asp-action="Index">
+        بازارها
+    </a>
+
+    <a class="nav-link @(currentController == "Blog" ? "active" : "")"
+       asp-controller="Blog"
+       asp-action="Index">
+        وبلاگ
+    </a>
+
+    <a class="nav-link @(currentController == "About" ? "active" : "")"
+       asp-controller="About"
+       asp-action="Index">
+        درباره ما
+    </a>
+
+</nav>
+
+            <div class="header-actions">
+
+                <a class="join-button" href="#">
+                    به ما بپیوندید!
+                </a>
+
+                <button class="menu-toggle"
+                        type="button"
+                        aria-label="باز کردن منو"
+                        aria-expanded="false"
+                        aria-controls="mainNav">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </button>
+
+            </div>
+
         </div>
+
+    </header>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    <footer class="site-footer">
+
+        <div class="container footer-inner">
+
+            <div class="footer-brand">
+
+                <a class="brand"
+                   asp-controller="Home"
+                   asp-action="Index">
+
+                    <img class="brand-logo"
+                         src="~/assets/images/icons/logo.png"
+                         alt="لوگوی دستیار هاب">
+
+                    <span class="brand-name">
+                        دستیار هاب
+                    </span>
+
+                </a>
+
+                <p>
+                    ابزارهای کاربردی، ساده و آنلاین در یک مکان.
+                </p>
+
+            </div>
+
+            <div class="footer-links">
+
+                <a asp-controller="Tools"
+                   asp-action="Index">
+                    ابزارها
+                </a>
+
+                <a href="#">بازارها</a>
+                <a href="#">وبلاگ</a>
+                <a href="#">درباره ما</a>
+                <a href="#">تماس با ما</a>
+
+            </div>
+
+            <p class="copyright">
+                © 2026 دستیار هاب
+            </p>
+
+        </div>
+
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script src="~/assets/js/app.js"
+            asp-append-version="true"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
+
 </body>
+
 </html>

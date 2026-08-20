@@ -1,4 +1,6 @@
 using DastYarHub.Models;
+using DastYarHub.Services;
+using DastYarHub.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -6,14 +8,23 @@ namespace DastYarHub.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly ICategoryApiService _categoryApiService;
+
+        public HomeController(ICategoryApiService categoryApiService)
         {
-            return View();
+            _categoryApiService = categoryApiService;
         }
 
-        public IActionResult Privacy()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var categories = await _categoryApiService.GetActiveCategoriesAsync();
+
+            var viewModel = new HomeViewModel
+            {
+                Categories = categories
+            };
+
+            return View(viewModel);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
