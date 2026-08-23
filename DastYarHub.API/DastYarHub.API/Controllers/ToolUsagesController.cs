@@ -1,4 +1,5 @@
 ﻿using DastYarHub.API.DTOs.ToolUsages;
+using DastYarHub.API.Models;
 using DastYarHub.API.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -57,6 +58,14 @@ public class ToolUsagesController : ControllerBase
             nameof(GetToolUsage),
             new { id = toolUsage.Id },
             toolUsage);
+    }
+
+    [HttpGet("popular")]
+    public async Task<ActionResult<List<PopularToolResponseDto>>> GetPopularTools()
+    {
+        var popularTools = await _toolUsageService.GetPopularToolsAsync();
+
+        return Ok(popularTools);
     }
 
     [HttpDelete("{id:long}")]

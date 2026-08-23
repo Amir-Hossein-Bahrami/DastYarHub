@@ -169,97 +169,182 @@
 
 /* Tools */
 .tools-section {
-    padding-top: 55px;
+    padding-top: 65px;
 }
 
 .tools-grid {
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 16px;
+    gap: 18px;
 }
 
 .tool-card {
-    min-height: 340px;
+    position: relative;
+    min-width: 0;
+    min-height: 410px;
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    align-items: center;
+    padding: 24px 20px 20px;
+    overflow: hidden;
     background: #fff;
     border: 2px solid #d9d5cd;
-    border-radius: 20px;
-    transition: 0.22s;
+    border-radius: 24px;
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.tool-rank {
+    color: var(--primary);
+    padding: 5px 7px;
+    background: var(--primary-light);
+    border-radius: 14px;
+    font-weight: 700;
+}
+
+
+/* نوار رنگی بالای کارت */
+.tool-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 22px;
+    left: 22px;
+    height: 5px;
+    background: linear-gradient( 90deg, var(--primary), var(--yellow), var(--green) );
+    border-radius: 0 0 999px 999px;
+    opacity: 0;
+    transform: scaleX(0.5);
+    transition: 0.22s ease;
 }
 
     .tool-card:hover {
         border-color: var(--border);
-        transform: translateY(-5px);
-        box-shadow: 4px 5px 0 #111;
+        transform: translateY(-7px);
+        box-shadow: 5px 7px 0 #111;
     }
 
-.tool-card-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
+        .tool-card:hover::before {
+            opacity: 1;
+            transform: scaleX(1);
+        }
 
-.tool-icon {
-    width: 70px;
-    height: 70px;
+/* تصویر وسط کارت */
+.tool-image-wrap {
+    width: 150px;
+    height: 150px;
     display: grid;
     place-items: center;
+    margin: 4px auto 14px;
+    border-radius: 28px;
+    transition: transform 0.22s ease;
 }
 
-    .tool-icon img {
-        width: 68px;
-        height: 68px;
+    .tool-image-wrap img {
+        width: 138px;
+        height: 138px;
+        display: block;
         object-fit: contain;
     }
 
-.tool-category {
-    padding: 4px 9px;
-    background: var(--primary-light);
-    color: var(--primary);
-    border-radius: 999px;
-    font-size: 11px;
+.tool-card:hover .tool-image-wrap {
+    transform: translateY(-3px) scale(1.04);
+}
+
+/* عنوان ابزار */
+.tool-card h3 {
+    width: 100%;
+    margin: 0 0 9px;
+    color: var(--text);
+    text-align: center;
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.5;
+}
+
+/* توضیحات ابزار */
+.tool-card p {
+    width: 100%;
+    min-height: 48px;
+    margin: 0 0 22px;
+    color: var(--muted);
+    text-align: center;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* ردیف پایین کارت */
+.tool-card-footer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px dashed #ddd8cd;
+}
+
+/* تعداد استفاده */
+.tool-usage {
+    min-width: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--muted);
+    white-space: nowrap;
+    font-size: 12px;
+    font-weight: 700;
     font-weight: 700;
 }
 
-.tool-card h3 {
-    margin-bottom: 8px;
-    font-size: 18px;
+.usage-dot {
+    width: 8px;
+    height: 8px;
+    flex: 0 0 8px;
+    background: var(--green);
+    border: 1px solid var(--border);
+    border-radius: 50%;
 }
 
-.tool-card p {
-    margin-bottom: 20px;
-    color: var(--muted);
-    font-size: 13px;
-}
-
+/* دکمه استفاده */
 .tool-button {
+    min-width: 100px;
     min-height: 42px;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin-top: auto;
+    gap: 7px;
+    padding: 0 16px;
     background: var(--yellow);
+    color: var(--text);
     border: 2px solid var(--border);
     border-radius: 12px;
     font-size: 13px;
     font-weight: 800;
-    transition: 0.18s;
+    text-decoration: none;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
 }
 
-    .tool-button:hover {
-        transform: translateY(-2px);
+    .tool-button span {
+        transition: transform 0.18s ease;
     }
+
+    .tool-button:hover {
+        background: #ffca2c;
+        transform: translateY(-2px);
+        box-shadow: 2px 3px 0 #111;
+    }
+
+        .tool-button:hover span {
+            transform: translateX(-3px);
+        }
 
 .tools-empty {
     display: none;
     padding: 35px;
-    text-align: center;
     color: var(--muted);
+    text-align: center;
 }
-
 /* Markets */
 .market-section {
     padding: 85px 0;
@@ -719,5 +804,65 @@
 
     .tool-card {
         min-height: 300px;
+    }
+}
+@media (max-width: 1200px) {
+    .tools-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 760px) {
+    .tools-section {
+        padding-top: 45px;
+    }
+
+    .tools-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+    }
+
+    .tool-card {
+        min-height: 390px;
+        padding: 20px 16px 16px;
+    }
+
+    .tool-image-wrap {
+        width: 130px;
+        height: 130px;
+    }
+
+        .tool-image-wrap img {
+            width: 120px;
+            height: 120px;
+        }
+}
+
+@media (max-width: 520px) {
+    .tools-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tool-card {
+        width: 100%;
+        min-height: 390px;
+    }
+
+    .tool-image-wrap {
+        width: 150px;
+        height: 150px;
+    }
+
+        .tool-image-wrap img {
+            width: 138px;
+            height: 138px;
+        }
+
+    .tool-card-footer {
+        gap: 14px;
+    }
+
+    .tool-button {
+        min-width: 115px;
     }
 }

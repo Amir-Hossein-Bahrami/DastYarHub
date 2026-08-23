@@ -73,30 +73,41 @@
         <div class="container">
             <div class="section-heading">
                 <div><span class="section-kicker">محبوب‌ترین‌ها</span><h2>ابزارهای پرطرفدار</h2></div>
-                <a href="#tools" class="section-link">همه ابزارها ←</a>
+            <a href="#tools" class="section-link">مشاهده همه ابزارها ←</a>
             </div>
-            <div class="tools-grid" id="toolsGrid">
-                <article class="tool-card" data-category="qr-code" data-title="ساخت QR Code">
-                    <div class="tool-card-top"><span class="tool-icon"><img src="../assets/images/tools/qr-code.png" alt="QR Code"></span><span class="tool-category">QR</span></div>
-                    <h3>ساخت QR Code</h3><p>ساخت انواع QR Code به شکل ساده و حرفه‌ای.</p><a href="#" class="tool-button">استفاده</a>
+        <div class="tools-grid" id="toolsGrid">
+
+            @foreach (var tool in Model.PopularTools)
+            {
+                <article class="tool-card" data-title="@tool.ToolName">
+                    <div class="tool-visual">
+                        <span class="tool-rank"> محبوب </span>
+                        <img src="@tool.IconUrl" alt="@tool.ToolName" class="tool-image" />
+                    </div>
+
+                    <div class="tool-content">
+                        <h3 class="tool-title"> @tool.ToolName </h3>
+                        <p class="tool-description"> استفاده سریع و آنلاین از ابزار @tool.ToolName </p>
+                    </div>
+
+                    <div class="tool-card-footer">
+                        <span class="tool-usage">
+                            <span class="usage-icon">↗</span>
+                            @tool.UsageCount بار استفاده
+                        </span>
+
+                        <a href="@tool.ToolSlug"
+                           class="tool-button">
+                            استفاده
+                            <span>←</span>
+                        </a>
+
+                    </div>
+
                 </article>
-                <article class="tool-card" data-category="pdf" data-title="تبدیل PDF به تصویر">
-                    <div class="tool-card-top"><span class="tool-icon"><img src="../assets/images/tools/pdf-to-image.png" alt="PDF به تصویر"></span><span class="tool-category">PDF</span></div>
-                    <h3>تبدیل PDF به تصویر</h3><p>تبدیل صفحات PDF به تصاویر با کیفیت مناسب.</p><a href="#" class="tool-button">استفاده</a>
-                </article>
-                <article class="tool-card" data-category="image" data-title="تبدیل تصویر به PDF">
-                    <div class="tool-card-top"><span class="tool-icon"><img src="../assets/images/tools/image-to-pdf.png" alt="تصویر به PDF"></span><span class="tool-category">تصویر</span></div>
-                    <h3>تصویر به PDF</h3><p>چند تصویر را به یک فایل PDF تبدیل کن.</p><a href="#" class="tool-button">استفاده</a>
-                </article>
-                <article class="tool-card" data-category="file" data-title="فشرده سازی فایل">
-                    <div class="tool-card-top"><span class="tool-icon"><img src="~/assets/images/tools/compress.png" alt="فشرده سازی فایل"></span><span class="tool-category">فایل</span></div>
-                    <h3>فشرده‌سازی فایل</h3><p>کاهش حجم فایل‌ها بدون دردسر و پیچیدگی.</p><a href="#" class="tool-button">استفاده</a>
-                </article>
-                <article class="tool-card" data-category="image" data-title="تصویر به متن">
-                    <div class="tool-card-top"><span class="tool-icon"><img src="../assets/images/tools/ocr.png" alt="تصویر به متن"></span><span class="tool-category">هوشمند</span></div>
-                    <h3>تصویر به متن</h3><p>استخراج متن از تصویر با استفاده از OCR.</p><a href="#" class="tool-button">استفاده</a>
-                </article>
-            </div>
+            }
+
+        </div>
             <div class="tools-empty" id="toolsEmpty" role="status" aria-live="polite">ابزاری با این مشخصات پیدا نشد.</div>
         </div>
     </section>

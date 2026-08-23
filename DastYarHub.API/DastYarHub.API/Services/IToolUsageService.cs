@@ -1,4 +1,5 @@
 ﻿using DastYarHub.API.DTOs.ToolUsages;
+using DastYarHub.API.Models;
 
 namespace DastYarHub.API.Services
 {
@@ -11,6 +12,8 @@ namespace DastYarHub.API.Services
         Task<List<ToolUsageResponseDto>> GetByToolIdAsync(int toolId);
 
         Task<ToolUsageResponseDto> CreateAsync(CreateToolUsageDto dto);
+
+        Task<List<PopularToolResponseDto>> GetPopularToolsAsync();
 
         Task<bool> DeleteAsync(long id);
     }

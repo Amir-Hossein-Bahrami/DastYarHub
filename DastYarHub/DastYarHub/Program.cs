@@ -7,8 +7,19 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddHttpClient<ICategoryApiService, CategoryApiService>(client =>
 {
-    var apiBaseUrl =
-        builder.Configuration["ApiSettings:BaseUrl"];
+    var apiBaseUrl = builder.Configuration["ApiSettings:BaseUrl"];
+
+    if (string.IsNullOrWhiteSpace(apiBaseUrl))
+    {
+        throw new InvalidOperationException("آدرس API در appsettings.json تنظیم نشده است.");
+    }
+
+    client.BaseAddress = new Uri(apiBaseUrl);
+});
+
+builder.Services.AddHttpClient<IToolUsageService, ToolUsageService>(client =>
+{
+    var apiBaseUrl = builder.Configuration["ApiSettings:BaseUrl"];
 
     if (string.IsNullOrWhiteSpace(apiBaseUrl))
     {

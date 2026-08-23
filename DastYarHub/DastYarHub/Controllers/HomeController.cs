@@ -9,19 +9,23 @@ namespace DastYarHub.Controllers
     public class HomeController : Controller
     {
         private readonly ICategoryApiService _categoryApiService;
+        private readonly IToolUsageService _toolUsageService;
 
-        public HomeController(ICategoryApiService categoryApiService)
+        public HomeController(ICategoryApiService categoryApiService, IToolUsageService toolUsageService)
         {
             _categoryApiService = categoryApiService;
+            _toolUsageService = toolUsageService;
         }
 
         public async Task<IActionResult> Index()
         {
             var categories = await _categoryApiService.GetActiveCategoriesAsync();
+            var popularTolls = await _toolUsageService.GetPopularToolsAsync();
 
             var viewModel = new HomeViewModel
             {
-                Categories = categories
+                Categories = categories,
+                PopularTools = popularTolls
             };
 
             return View(viewModel);

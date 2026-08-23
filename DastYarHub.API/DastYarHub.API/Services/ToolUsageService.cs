@@ -110,6 +110,31 @@ namespace DastYarHub.API.Services
             };
         }
 
+        public async Task<List<PopularToolResponseDto>> GetPopularToolsAsync()
+        {
+            return await _context.ToolUsages
+                .AsNoTracking()
+                .Where(toolUsage => toolUsage.Tool.IsActive)
+                .GroupBy(toolUsage => new
+                {
+                    toolUsage.ToolId,
+                    toolUsage.Tool.Name,
+                    toolUsage.Tool.Slug,
+                    toolUsage.Tool.IconUrl
+                })
+                .Select(group => new PopularToolResponseDto
+                {
+                    ToolId = group.Key.ToolId,
+                    ToolName = group.Key.Name,
+                    ToolSlug = group.Key.Slug,
+                    IconUrl = group.Key.IconUrl,
+                    UsageCount = group.Count()
+                })
+                .OrderByDescending(tool => tool.UsageCount)
+                .Take(5)
+                .ToListAsync();
+        }
+
         public async Task<bool> DeleteAsync(long id)
         {
             var toolUsage = await _context.ToolUsages
